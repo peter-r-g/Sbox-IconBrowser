@@ -1,4 +1,5 @@
 ﻿using Editor;
+using Sandbox;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -44,7 +45,7 @@ public sealed class IconBrowser : Widget
 	{
 		MinimumSize = new Vector2( 192, 192 );
 
-		SetLayout( LayoutMode.TopToBottom );
+		this.SetLayout( LayoutMode.TopToBottom );
 
 		// Toolbar.
 		{
@@ -118,7 +119,7 @@ public sealed class IconBrowser : Widget
 			filePath += ".cs";
 
 		DumpIconsToCsFile( filePath );
-		Utility.OpenFileFolder( filePath );
+		EditorUtility.OpenFileFolder( filePath );
 	}
 
 	/// <summary>
@@ -201,9 +202,9 @@ public sealed class IconBrowser : Widget
 
 		var menu = new Menu();
 
-		menu.AddOption( "Copy Name", null, () => Clipboard.Copy( iconData.Name ) );
-		menu.AddOption( "Copy C# Name", null, () => Clipboard.Copy( iconData.CsName ) );
-		menu.AddOption( "Copy S&&box Name", null, () => Clipboard.Copy( iconData.IconName ) );
+		menu.AddOption( "Copy Name", null, () => EditorUtility.Clipboard.Copy( iconData.Name ) );
+		menu.AddOption( "Copy C# Name", null, () => EditorUtility.Clipboard.Copy( iconData.CsName ) );
+		menu.AddOption( "Copy S&&box Name", null, () => EditorUtility.Clipboard.Copy( iconData.IconName ) );
 
 		menu.OpenAtCursor();
 	}
